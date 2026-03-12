@@ -1,0 +1,242 @@
+:root {
+  --sky: #b9ecff;
+  --grass: #a6e67d;
+  --berry: #ff4d6d;
+  --honey: #ffb703;
+  --ink: #203040;
+  --card: #ffffffde;
+  --shadow: 0 16px 36px rgba(10, 40, 58, 0.18);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  margin: 0;
+  font-family: "Fredoka", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 0%, #d8f7ff 0 18%, transparent 22%),
+    radial-gradient(circle at 80% 15%, #ffe9ab 0 12%, transparent 18%),
+    linear-gradient(180deg, var(--sky), #dbf9ff 48%, #dcf8c8 48.1%, var(--grass) 100%);
+  min-height: 100vh;
+}
+
+.app {
+  width: min(980px, 96vw);
+  margin: 12px auto 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border: 3px solid #ffffffcc;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+h1 {
+  margin: 0;
+  font: 800 clamp(1.6rem, 4.8vw, 2.45rem) "Baloo 2", cursive;
+}
+
+.subtitle {
+  margin: 2px 0 12px;
+  font-size: 1.03rem;
+}
+
+.teams {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.team-card {
+  text-align: left;
+  border-radius: 18px;
+  border: 3px solid transparent;
+  padding: 12px;
+  background: #fff;
+}
+
+.team-card h2 {
+  margin: 0;
+  font: 700 1.25rem "Baloo 2", cursive;
+}
+
+.team-card p {
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+.team-card .emoji {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font: 700 1rem "Baloo 2", cursive;
+  color: #18324a;
+  background: #f3fbff;
+  border: 2px solid #cee8f5;
+  margin-bottom: 6px;
+}
+
+.team-card[data-team="killybird"] { background: #e8f4ff; }
+.team-card[data-team="bumblebees"] { background: #fff6d4; }
+.team-card.selected { border-color: #2a8cd6; }
+
+.helper {
+  margin: 10px 0 0;
+  font-weight: 600;
+  color: #35536c;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: 700 1rem "Baloo 2", cursive;
+}
+
+.btn-start {
+  margin-top: 10px;
+  width: 100%;
+  background: linear-gradient(140deg, #84e38f, #4cc965);
+  color: #0d3d11;
+}
+
+.btn-secondary {
+  color: #14304f;
+  background: linear-gradient(140deg, #fff6c2, #ffd976);
+}
+
+.hidden { display: none; }
+
+.game-card {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.fighter-top {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.hp-bar {
+  margin-top: 4px;
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  background: #d9e8ef;
+  overflow: hidden;
+}
+
+.hp-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #32d583, #12b76a);
+  transition: width 120ms linear;
+}
+
+.center-info {
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+#status-pill {
+  color: #27435a;
+  font-weight: 600;
+}
+
+#arena {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 18% 20%, #ffffff 0 6%, transparent 10%),
+    radial-gradient(circle at 75% 22%, #fff5d7 0 10%, transparent 16%),
+    linear-gradient(180deg, #b3e9ff 0 66%, #98d866 66% 100%);
+  border: 3px solid #ffffffd4;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.action {
+  min-height: 42px;
+  border-radius: 14px;
+  border: none;
+  font: 700 1.02rem "Baloo 2", cursive;
+  color: #0f2b40;
+  background: #e4f3fb;
+  touch-action: manipulation;
+}
+
+.action[data-action="attack"] { background: #ffd5dd; }
+.action[data-action="special"] { background: #ffeaa3; }
+.action[data-action="shield"] { background: #ccefff; }
+.action[data-action="moveCloser"] { background: #d9f7d0; }
+.action[data-action="moveAway"] { background: #f2e1ff; }
+.action.end-turn { background: #c2e8ff; }
+.action:disabled { opacity: 0.45; }
+
+.log-wrap {
+  border: 2px solid #d7e6ee;
+  border-radius: 14px;
+  background: #fbfeff;
+  padding: 8px;
+}
+
+.log-wrap h3 {
+  margin: 0 0 6px;
+  font: 700 1rem "Baloo 2", cursive;
+}
+
+#battle-log {
+  margin: 0;
+  padding-left: 18px;
+  max-height: 160px;
+  overflow: auto;
+}
+
+#battle-log li {
+  margin: 3px 0;
+  font-size: 0.9rem;
+}
+
+.game-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 800px) {
+  .teams {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .hud {
+    grid-template-columns: 1fr;
+  }
+
+  .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

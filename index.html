@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Killybird vs. Bumblebees</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card" id="setup-card">
+      <h1>Killybird vs. Bumblebees</h1>
+      <p class="subtitle">Touchscreen turn-based battle for kids.</p>
+
+      <div class="teams">
+        <div class="team-card selected">
+          <div class="emoji">KB</div>
+          <h2>Team Killybird</h2>
+          <p>Quick pecks and swoop attacks.</p>
+        </div>
+        <div class="team-card">
+          <div class="emoji">BB</div>
+          <h2>Team Bumblebees</h2>
+          <p>Power stings and sturdy defense.</p>
+        </div>
+      </div>
+
+      <p class="helper">Two players take turns on one device. Player 1 is Killybird and Player 2 is Bumblebees.</p>
+      <button class="btn btn-start" id="start-btn">Start Battle</button>
+    </section>
+
+    <section class="card game-card hidden" id="game-card">
+      <div class="hud">
+        <div class="fighter" id="left-fighter">
+          <div class="fighter-top"><span id="left-name">--</span><span id="left-team">--</span></div>
+          <div class="hp-bar"><div class="hp-fill" id="left-hp"></div></div>
+        </div>
+        <div class="center-info">
+          <div id="turn-pill">Turn: --</div>
+          <div id="distance-pill">Distance: --</div>
+          <div id="status-pill">Battle started</div>
+        </div>
+        <div class="fighter" id="right-fighter">
+          <div class="fighter-top"><span id="right-name">--</span><span id="right-team">--</span></div>
+          <div class="hp-bar"><div class="hp-fill" id="right-hp"></div></div>
+        </div>
+      </div>
+
+      <canvas id="arena" width="1000" height="520" aria-label="Battle arena"></canvas>
+
+      <div class="action-grid" id="action-grid">
+        <button class="action" data-action="attack">Attack</button>
+        <button class="action" data-action="special">Special</button>
+        <button class="action" data-action="shield">Shield</button>
+        <button class="action" data-action="moveCloser">Move Closer</button>
+        <button class="action" data-action="moveAway">Move Away</button>
+        <button class="action end-turn" data-action="endTurn">End Turn</button>
+      </div>
+
+      <div class="log-wrap">
+        <h3>Battle Log</h3>
+        <ul id="battle-log"></ul>
+      </div>
+
+      <div class="game-footer">
+        <button id="restart-btn" class="btn btn-secondary">New Match</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
